@@ -43,17 +43,33 @@
         
         <!-- Episode Badge -->
         <div v-if="movie.episode_current && movie.episode_current !== 'Full'" 
-          class="absolute top-1 right-1 md:top-2 md:right-2">
+          class="absolute top-1 right-1 md:top-2 md:right-2 z-10">
           <span class="px-1 py-px md:px-2 md:py-1 bg-blue-600/90 text-white rounded text-[8px] md:text-[11px] font-bold leading-none">
             {{ movie.episode_current === 'Hoàn Tất' ? 'END' : `T${movie.episode_current}` }}
           </span>
         </div>
 
+        <!-- Bookmark Icon (Mobile only, desktop uses popup) -->
+        <button 
+          @click.stop="userStore.toggleBookmark(movie)"
+          class="absolute top-1 md:hidden z-10 w-6 h-6 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm"
+          :class="(movie.episode_current && movie.episode_current !== 'Full') ? 'right-[2.5rem]' : 'right-1'"
+        >
+          <svg class="w-3.5 h-3.5" :class="userStore.isBookmarked(movie.slug) ? 'text-red-500' : 'text-white'" :fill="userStore.isBookmarked(movie.slug) ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </button>
+
         <!-- Mobile: Title overlay on image -->
-        <div class="absolute bottom-0 left-0 right-0 p-1.5 md:hidden">
+        <div class="absolute bottom-0 left-0 right-0 p-1.5 md:hidden" :class="{'mb-1': movie.percentage !== undefined}">
           <h3 class="text-[10px] font-semibold text-white line-clamp-2 leading-tight">
             {{ movie.name }}
           </h3>
+        </div>
+
+        <!-- Progress Bar -->
+        <div v-if="movie.percentage !== undefined" class="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+          <div class="h-full bg-red-600 rounded-r-full" :style="{ width: `${movie.percentage}%` }"></div>
         </div>
       </div>
       
@@ -119,9 +135,14 @@
             <button @click.stop="handleClick" class="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all text-sm">
               Xem Phim
             </button>
-            <button class="w-10 h-10 bg-white/5 text-gray-400 rounded-xl flex items-center justify-center hover:bg-white/10 hover:text-red-500 transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            <button 
+              @click.stop="userStore.toggleBookmark(movie)"
+              class="w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-md hover:shadow-lg"
+              :class="userStore.isBookmarked(movie.slug) ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-red-500'"
+              :title="userStore.isBookmarked(movie.slug) ? 'Bỏ lưu' : 'Lưu phim'"
+            >
+              <svg class="w-5 h-5" :fill="userStore.isBookmarked(movie.slug) ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </button>
           </div>
@@ -147,10 +168,13 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import axiosClient from '../api/axiosClient'
+import { useUserStore } from '../stores/userStore'
 
 const props = defineProps({
   movie: { type: Object, required: true }
 })
+
+const userStore = useUserStore()
 
 const emit = defineEmits(['click'])
 

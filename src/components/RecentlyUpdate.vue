@@ -24,8 +24,10 @@
       </div>
 
       <!-- Loading Skeleton -->
-      <div v-if="loading" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4 animate-pulse">
-        <div v-for="n in 6" :key="n" class="aspect-[2/3] bg-white/5 rounded-xl"></div>
+      <div v-if="loading" class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-4">
+        <div v-for="n in 6" :key="n" class="aspect-[2/3] rounded-xl relative overflow-hidden bg-white/5">
+          <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_1.5s_infinite]"></div>
+        </div>
       </div>
 
       <!-- Mobile: 3 column grid -->

@@ -1,8 +1,8 @@
 <template>
-  <nav :class="[
-    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-    isScrolled ? 'bg-black/95 backdrop-blur-xl border-b border-white/5 shadow-lg' : 'bg-transparent border-b border-transparent'
-  ]">
+  <nav 
+    :class="['fixed w-full z-50 transition-all duration-300', 
+       isScrolled ? 'bg-black/60 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-black/50 py-2' : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4']"
+  >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center h-16 gap-6">
         <!-- LOGO -->
@@ -288,7 +288,7 @@ const mainMenuItems = [
   { name: 'Trang chủ', link: '/' },
   { name: 'Phim Bộ', link: '/danh-sach/phim-bo' },
   { name: 'Phim Lẻ', link: '/danh-sach/phim-le' },
-  { name: 'Lọc Phim', link: '/movies' },
+  { name: 'Tủ Phim', link: '/tu-phim' },
   { name: 'Hoạt Hình', link: '/danh-sach/hoat-hinh' },
   { name: 'TV Shows', link: '/danh-sach/tv-shows' }
 ]

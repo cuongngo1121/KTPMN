@@ -4,6 +4,7 @@
       :slides-per-view="1"
       :modules="[Autoplay, Pagination, EffectFade]"
       :effect="'fade'"
+      :fadeEffect="{ crossFade: true }"
       :loop="true"
       :speed="1000"
       :pagination="{ 
@@ -20,9 +21,10 @@
         v-for="(movie, index) in movies"
         :key="index"
         class="relative h-full w-full"
+        v-slot="{ isActive }"
       >
-        <!-- Background Image with Ken Burns Effect -->
-        <div class="absolute inset-0 overflow-hidden">
+        <!-- Background Image with Ken Burns Effect & Parallax -->
+        <div class="absolute inset-0 overflow-hidden transition-transform duration-[400ms] ease-out">
           <img
             class="w-full h-full object-cover object-center animate-ken-burns"
             :src="getImageUrl(movie.thumb_url || movie.poster_url)"
@@ -36,21 +38,21 @@
         </div>
 
         <!-- Content Content -->
-        <div class="absolute inset-0 flex items-end md:items-center pb-24 md:pb-0">
+        <div class="absolute inset-0 flex items-end md:items-center pb-24 md:pb-0 transition-transform duration-[400ms] ease-out">
           <div class="container mx-auto px-4 md:px-12 max-w-[1536px] pt-16 md:pt-20">
             <div class="max-w-4xl space-y-3 md:space-y-6">
               <!-- Movie Title -->
-              <h1 class="text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tighter drop-shadow-2xl opacity-0 animate-slide-up" style="animation-delay: 0.2s;">
+              <h1 :class="['text-3xl sm:text-4xl md:text-7xl lg:text-8xl font-black text-white leading-tight tracking-tighter drop-shadow-2xl', isActive ? 'animate-slide-up' : 'opacity-0']" style="animation-delay: 0.2s;">
                 {{ movie.name }}
               </h1>
               
               <!-- Origin Name (Hidden on Mobile) -->
-              <p class="hidden md:block text-lg md:text-3xl text-white/80 font-light italic opacity-0 animate-slide-up line-clamp-1" style="animation-delay: 0.4s;">
+              <p :class="['hidden md:block text-lg md:text-3xl text-white/80 font-light italic line-clamp-1', isActive ? 'animate-slide-up' : 'opacity-0']" style="animation-delay: 0.4s;">
                  {{ movie.origin_name }}
               </p>
 
               <!-- Meta Row -->
-              <div class="flex items-center gap-3 md:gap-4 text-xs md:text-lg font-medium text-gray-200 opacity-0 animate-slide-up" style="animation-delay: 0.6s;">
+              <div :class="['flex items-center gap-3 md:gap-4 text-xs md:text-lg font-medium text-gray-200', isActive ? 'animate-slide-up' : 'opacity-0']" style="animation-delay: 0.6s;">
                 <span class="text-[#46d369] font-bold">98% Match</span>
                 <span class="text-gray-400">•</span>
                 <span>{{ movie.year }}</span>
@@ -61,12 +63,12 @@
               </div>
 
               <!-- Description (Reduced on Mobile) -->
-              <p class="text-gray-300 text-xs md:text-xl line-clamp-2 md:line-clamp-3 max-w-xl md:max-w-2xl leading-relaxed drop-shadow-lg opacity-0 animate-slide-up" style="animation-delay: 0.8s;">
+              <p :class="['text-gray-300 text-xs md:text-xl line-clamp-2 md:line-clamp-3 max-w-xl md:max-w-2xl leading-relaxed drop-shadow-lg', isActive ? 'animate-slide-up' : 'opacity-0']" style="animation-delay: 0.8s;">
                  {{ movie.content ? movie.content.replace(/<[^>]+>/g, '') : 'Một siêu phẩm điện ảnh không thể bỏ lỡ. Khám phá ngay thế giới phim đặc sắc với chất lượng hình ảnh tuyệt đỉnh...' }}
               </p>
 
               <!-- Buttons -->
-              <div class="flex items-center gap-3 pt-4 md:pt-6 opacity-0 animate-slide-up" style="animation-delay: 1s;">
+              <div :class="['flex items-center gap-3 pt-4 md:pt-6', isActive ? 'animate-slide-up' : 'opacity-0']" style="animation-delay: 1s;">
                 <button
                   @click="goToMovieWatch(movie)"
                   class="flex-1 md:flex-none group flex items-center justify-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-bold text-sm md:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-red-600/20"
@@ -101,7 +103,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
 import 'swiper/css/effect-fade'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref } from 'vue'
 import { useMovieStore } from '../stores/movieStore'
 import { useRouter } from 'vue-router'
 
@@ -130,6 +132,7 @@ function goToMovieDetails(movie) {
 function goToMovieWatch(movie) {
   router.push({ path: `/watch/${movie.slug}` })
 }
+
 </script>
 
 <style scoped>

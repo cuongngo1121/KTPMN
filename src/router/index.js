@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import MovieDetail from "../views/MovieDetail.vue";
 import Genre from "../views/Genre.vue";
-import Movies from "../views/Movies.vue";
 import Country from "../views/Country.vue";
 import Series from "../views/Series.vue";
 import MovieWatch from "../views/MovieWatch.vue";
@@ -31,8 +30,7 @@ const routes = [
     },
     {
         path: "/movies",
-        name: "Movies",
-        component: Movies,
+        redirect: "/tim-kiem",
     },
     {
         path: "/series",
@@ -85,6 +83,12 @@ const routes = [
         path: "/tim-kiem",
         name: "SearchResults",
         component: () => import("../views/SearchResults.vue"),
+    },
+    {
+        path: "/tu-phim",
+        name: "Bookmarks",
+        component: () => import("../views/Bookmarks.vue"),
+        meta: { title: "Tủ Phim Của Bạn" }
     },
     {
         path: "/:pathMatch(.*)*",

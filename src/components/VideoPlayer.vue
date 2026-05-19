@@ -16,12 +16,17 @@ const props = defineProps({
     type: Object,
     default: () => ({}),
   },
+  startTime: {
+    type: Number,
+    default: 0
+  }
 });
 
 const artRef = ref(null);
 const instance = ref(null);
+let hasSeeked = false;
 
-const emit = defineEmits(['loaded', 'error']);
+const emit = defineEmits(['loaded', 'error', 'timeupdate', 'ended']);
 
 function initPlayer() {
   if (instance.value) {
@@ -70,20 +75,36 @@ function initPlayer() {
 
     // Native events
     instance.value.on('video:canplay', () => {
+      if (props.startTime > 0 && !hasSeeked) {
+        instance.value.seek = props.startTime;
+        hasSeeked = true;
+      }
       emit('loaded');
     });
     
     instance.value.on('video:error', () => {
       emit('error');
     });
+
+    instance.value.on('video:timeupdate', () => {
+      if (instance.value && instance.value.video) {
+        emit('timeupdate', instance.value.video.currentTime, instance.value.video.duration);
+      }
+    });
+
+    instance.value.on('video:ended', () => {
+      emit('ended');
+    });
   });
 }
 
 onMounted(() => {
+  hasSeeked = false;
   initPlayer();
 });
 
 watch(() => props.option.url, () => {
+  hasSeeked = false;
   if (instance.value && props.option.url) {
     instance.value.switchUrl(props.option.url);
   } else {

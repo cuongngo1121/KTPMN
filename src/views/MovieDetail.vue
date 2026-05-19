@@ -79,10 +79,13 @@
   
                 <button 
                   @click="handleAddToWatchlist"
-                  title="Thêm vào danh sách chờ"
-                  class="p-3 md:p-4 bg-white/10 hover:bg-amber-600 backdrop-blur-md border border-white/20 hover:border-amber-500 text-white rounded-xl md:rounded-full transition-all flex items-center justify-center active:scale-95 group shadow-lg"
+                  title="Lưu phim"
+                  class="p-3 md:p-4 backdrop-blur-md border rounded-xl md:rounded-full transition-all flex items-center justify-center active:scale-95 group shadow-lg"
+                  :class="userStore.isBookmarked(movie.slug) ? 'bg-red-600 border-red-500 text-white hover:bg-red-700' : 'bg-white/10 hover:bg-red-600/50 border-white/20 hover:border-red-500 text-white'"
                 >
-                  <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg>
+                  <svg class="w-5 h-5 md:w-6 md:h-6" :fill="userStore.isBookmarked(movie.slug) ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -192,9 +195,11 @@
  import NavBar from '../components/NavBar.vue';
  import { computed, onMounted, ref, watch, inject } from 'vue';
  import { useMovieStore } from '../stores/movieStore';
+ import { useUserStore } from '../stores/userStore';
  import ViewDetailBtn from '../components/ViewDetailBtn.vue';
  import RelatedMovies from '../components/RelatedMovies.vue';
  const movieStore = useMovieStore();
+ const userStore = useUserStore();
  const toast = inject('toast');
 
  import { useRoute, useRouter } from 'vue-router';
@@ -261,10 +266,13 @@ function handleShare() {
 }
 
 function handleAddToWatchlist() {
+  if (!movie.value) return;
+  userStore.toggleBookmark(movie.value);
+  const isSaved = userStore.isBookmarked(movie.value.slug);
   toast?.add({
     type: 'success',
-    title: 'Tuyệt vời!',
-    message: `Đã thêm thư viện theo dõi.`
+    title: isSaved ? 'Đã lưu phim!' : 'Đã bỏ lưu',
+    message: isSaved ? 'Phim đã được thêm vào Tủ Phim của bạn.' : 'Phim đã gỡ khỏi Tủ Phim.'
   });
 }
 

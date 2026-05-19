@@ -3,7 +3,11 @@
     <WelcomeScreen v-if="showWelcome" @finish="handleWelcomeFinish" />
     <div v-else>
       <LoadingOverlay :is-loading="isLoading" />
-      <router-view :key="$route.fullPath" />
+      <router-view v-slot="{ Component }">
+        <transition name="page" mode="out-in">
+          <component :is="Component" :key="$route.fullPath" />
+        </transition>
+      </router-view>
       <BottomNav @open-menu="handleOpenMenu" />
       <Toast ref="toastRef" />
     </div>

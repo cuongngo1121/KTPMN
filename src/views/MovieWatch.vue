@@ -41,6 +41,9 @@
               <VideoPlayer
                 v-if="videoUrl && isM3U8"
                 :option="playerOptions"
+                :startTime="getStartTime()"
+                @timeupdate="handleTimeUpdate"
+                @ended="handleVideoEnded"
                 class="video-element w-full h-full z-20 relative rounded-xl overflow-hidden"
               />
               
@@ -108,17 +111,24 @@
               </div>
               
               <div class="flex items-center gap-3">
+                <button v-if="hasNextEpisode" @click="playNextEpisode" class="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-amber-600 border border-white/5 hover:border-amber-500 rounded-lg transition-all duration-300 text-sm font-medium group active:scale-95">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-black transition-colors">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25V18a2.25 2.25 0 002.25 2.25h13.5A2.25 2.25 0 0021 18V8.25m-18 0V6a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6zM7.5 6h.008v.008H7.5V6zm2.25 0h.008v.008H9.75V6z" />
+                  </svg>
+                  <span class="group-hover:text-black transition-colors text-gray-400 font-bold">Tập Tiếp</span>
+                </button>
                 <button @click="handleShare" class="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-amber-500/30 rounded-lg transition-all duration-300 text-sm font-medium group active:scale-95">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400 group-hover:text-amber-400 transition-colors">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
                   </svg>
                   <span class="group-hover:text-white transition-colors">Chia sẻ</span>
                 </button>
-                <button @click="handleAddToWatchlist" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 rounded-lg transition-all duration-300 text-sm font-bold text-black shadow-lg shadow-amber-600/20 hover:shadow-amber-500/40 hover:-translate-y-0.5 active:scale-95">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                <button @click="handleAddToWatchlist" class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r hover:-translate-y-0.5 active:scale-95 transition-all duration-300 text-sm font-bold shadow-lg rounded-lg"
+                        :class="userStore.isBookmarked(movie?.slug) ? 'from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-red-600/20 hover:shadow-red-500/40' : 'from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-black shadow-amber-600/20 hover:shadow-amber-500/40'">
+                  <svg xmlns="http://www.w3.org/2000/svg" :fill="userStore.isBookmarked(movie?.slug) ? 'currentColor' : 'none'" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
-                  Thêm vào DS
+                  {{ userStore.isBookmarked(movie?.slug) ? 'Đã lưu' : 'Lưu phim' }}
                 </button>
               </div>
             </div>
@@ -283,6 +293,7 @@
 import { onMounted, onUnmounted, computed, ref, watch, nextTick, inject } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useMovieStore } from '../stores/movieStore';
+import { useUserStore } from '../stores/userStore';
 import NavBar from '../components/NavBar.vue';
 import VideoPlayer from '../components/VideoPlayer.vue';
 
@@ -290,6 +301,7 @@ const toast = inject('toast');
 const route = useRoute();
 const router = useRouter();
 const movieStore = useMovieStore();
+const userStore = useUserStore();
 
 const loadingPage = ref(true);
 const loadingEpisode = ref(false);
@@ -373,6 +385,17 @@ function applyAspectMode(mode) {
 onMounted(async () => {
   const slug = route.params.slug; 
   await movieStore.getMovieDetail(slug);
+  
+  if (movie.value) {
+    const history = userStore.getHistory(slug);
+    if (history && history.currentEpisode && movie.value.episodes?.[0]?.server_data) {
+      const idx = movie.value.episodes[0].server_data.findIndex(ep => ep.slug === history.currentEpisode.slug);
+      if (idx !== -1) {
+        currentEpisode.value = idx;
+      }
+    }
+  }
+
   loadingPage.value = false;
   
   // Landscape detection
@@ -440,6 +463,45 @@ const hasEpisodes = computed(() => {
   return true;
 });
 
+const hasNextEpisode = computed(() => {
+  const data = movie.value?.episodes?.[0]?.server_data;
+  if (!data) return false;
+  return currentEpisode.value < data.length - 1;
+});
+
+function playNextEpisode() {
+  if (hasNextEpisode.value) {
+    handleClick(currentEpisode.value + 1);
+  }
+}
+
+function getStartTime() {
+  const history = userStore.getHistory(movie.value?.slug);
+  if (history && history.currentEpisode.slug === currentEpisodeData.value?.slug) {
+    return history.progress || 0;
+  }
+  return 0;
+}
+
+function handleTimeUpdate(currentTime, duration) {
+  if (movie.value && currentEpisodeData.value) {
+    userStore.updateHistory(movie.value, currentEpisodeData.value, currentTime, duration);
+  }
+}
+
+function handleVideoEnded() {
+  if (hasNextEpisode.value) {
+    toast?.add({
+      type: 'info',
+      title: 'Hết tập!',
+      message: 'Tự động chuyển tập tiếp theo trong 5 giây...'
+    });
+    setTimeout(() => {
+      playNextEpisode();
+    }, 5000);
+  }
+}
+
 function goBackToDetail() {
   if (movie.value?.slug) {
     router.push({ path: `/movie/${movie.value.slug}` });
@@ -465,10 +527,13 @@ function handleShare() {
 }
 
 function handleAddToWatchlist() {
+  if (!movie.value) return;
+  userStore.toggleBookmark(movie.value);
+  const isSaved = userStore.isBookmarked(movie.value.slug);
   toast?.add({
     type: 'success',
-    title: 'Tuyệt vời!',
-    message: `Đã thêm thư viện theo dõi.`
+    title: isSaved ? 'Đã lưu phim!' : 'Đã bỏ lưu',
+    message: isSaved ? 'Phim đã được thêm vào Tủ Phim của bạn.' : 'Phim đã gỡ khỏi Tủ Phim.'
   });
 }
 
@@ -494,7 +559,18 @@ watch(() => route.params.slug, async (newSlug) => {
   if (newSlug) {
     loadingPage.value = true;
     await movieStore.getMovieDetail(newSlug);
+    
     currentEpisode.value = 0;
+    if (movie.value) {
+      const history = userStore.getHistory(newSlug);
+      if (history && history.currentEpisode && movie.value.episodes?.[0]?.server_data) {
+        const idx = movie.value.episodes[0].server_data.findIndex(ep => ep.slug === history.currentEpisode.slug);
+        if (idx !== -1) {
+          currentEpisode.value = idx;
+        }
+      }
+    }
+
     loadingPage.value = false;
   }
 });

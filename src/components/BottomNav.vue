@@ -1,9 +1,7 @@
 <template>
-  <div class="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
-    <!-- Clean dark bar -->
-    <div class="bg-[#0a0a0a]/95 backdrop-blur-xl border-t border-white/10">
-      <div class="flex items-center justify-around h-14 max-w-md mx-auto pb-safe">
-        <!-- Nav Items -->
+  <nav class="fixed bottom-0 w-full z-[100] bg-black/60 backdrop-blur-2xl border-t border-white/10 pb-safe pt-2 px-2 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] lg:hidden">
+    <div class="flex items-center justify-around h-14 max-w-md mx-auto relative pb-2">
+      <!-- Nav Items -->
         <router-link 
           v-for="item in navItems"
           :key="item.path"
@@ -34,8 +32,7 @@
           <span class="text-[10px] font-medium">Menu</span>
         </button>
       </div>
-    </div>
-  </div>
+    </nav>
 </template>
 
 <script setup>
@@ -82,6 +79,48 @@ const HomeIcon = {
   }
 }
 
+const MovieIcon = {
+  props: ['active'],
+  render() {
+    return h('svg', { 
+      class: 'w-5 h-5', 
+      fill: this.active ? 'currentColor' : 'none', 
+      stroke: 'currentColor', 
+      viewBox: '0 0 24 24',
+      'stroke-width': this.active ? '0' : '1.5'
+    }, [
+      h('path', { 
+        d: this.active
+          ? 'M19.5 3h-15C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3zm-11 2h3v4h-3V5zm-4 0h2v4h-2V5zm0 6h2v4h-2v-4zm0 6h2v4h-2v-4zm4 4h-3v-4h3v4zm4 0h-3v-4h3v4zm0-6h-3v-4h3v4zm4 6h-3v-4h3v4zm0-6h-3v-4h3v4zm0-6h-3V5h3v4zm4 12h-2v-4h2v4zm0-6h-2v-4h2v4zm0-6h-2V5h2v4z'
+          : 'M3.375 3v18c0 .621.504 1.125 1.125 1.125h15c.621 0 1.125-.504 1.125-1.125V3H3.375zm0 0v.01m0 3.74v.01m0 3.74v.01m0 3.74v.01m0 3.74v.01m17.25-15v.01m0 3.74v.01m0 3.74v.01m0 3.74v.01m0 3.74v.01',
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round'
+      })
+    ])
+  }
+}
+
+const SeriesIcon = {
+  props: ['active'],
+  render() {
+    return h('svg', { 
+      class: 'w-5 h-5', 
+      fill: this.active ? 'currentColor' : 'none', 
+      stroke: 'currentColor', 
+      viewBox: '0 0 24 24',
+      'stroke-width': this.active ? '0' : '1.5'
+    }, [
+      h('path', { 
+        d: this.active
+          ? 'M21 3H3C1.895 3 1 3.895 1 5v12c0 1.105.895 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.105 0 2-.895 2-2V5c0-1.105-.895-2-2-2z'
+          : 'M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z',
+        'stroke-linecap': 'round',
+        'stroke-linejoin': 'round'
+      })
+    ])
+  }
+}
+
 const SearchIcon = {
   props: ['active'],
   render() {
@@ -101,31 +140,11 @@ const SearchIcon = {
   }
 }
 
-const FilterIcon = {
-  props: ['active'],
-  render() {
-    return h('svg', { 
-      class: 'w-5 h-5', 
-      fill: this.active ? 'currentColor' : 'none', 
-      stroke: this.active ? 'none' : 'currentColor', 
-      viewBox: '0 0 24 24',
-      'stroke-width': '1.5'
-    }, [
-      h('path', { 
-        d: this.active
-          ? 'M3.792 2.938A49.069 49.069 0 0112 2.25c2.797 0 5.54.236 8.209.688a1.857 1.857 0 011.541 1.836v1.044a3 3 0 01-.879 2.121l-6.182 6.182a1.5 1.5 0 00-.439 1.061v2.927a3 3 0 01-1.658 2.684l-1.757.878A.75.75 0 019.75 21v-5.818a1.5 1.5 0 00-.44-1.06L3.13 7.938a3 3 0 01-.879-2.121V4.774c0-.897.64-1.683 1.542-1.836z'
-          : 'M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z',
-        'stroke-linecap': 'round',
-        'stroke-linejoin': 'round'
-      })
-    ])
-  }
-}
-
 const navItems = [
-  { path: '/', label: 'Home', icon: HomeIcon },
+  { path: '/', label: 'Trang chủ', icon: HomeIcon },
+  { path: '/danh-sach/phim-le', label: 'Phim Lẻ', icon: MovieIcon },
+  { path: '/danh-sach/phim-bo', label: 'Phim Bộ', icon: SeriesIcon },
   { path: '/tim-kiem', label: 'Tìm kiếm', icon: SearchIcon },
-  { path: '/movies', label: 'Lọc Phim', icon: FilterIcon },
 ]
 </script>
 

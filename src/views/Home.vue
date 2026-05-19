@@ -6,6 +6,9 @@
     <!-- Banner full width -->
     <Banner />
 
+    <!-- Continue Watching -->
+    <ContinueWatching />
+
     <!-- Trending Section (Grid Layout) -->
     <TrendingSection />
 
@@ -29,6 +32,7 @@
 <script setup>
 import NavBar from '../components/NavBar.vue'
 import Banner from '../components/Banner.vue'
+import ContinueWatching from '../components/ContinueWatching.vue'
 import RecentlyUpdate from '../components/RecentlyUpdate.vue'
 import NewMovie from '../components/NewMovie.vue'
 import AnimationShowcase from '../components/AnimationShowcase.vue'
