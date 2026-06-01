@@ -77,7 +77,7 @@ test.describe('CMovie - API Interception & Mocking Flow', () => {
     // In TrendingSection.vue, if loading is true, it displays grid containing skeletons. 
     // After finally block executes, loading becomes false.
     const loadingSkeleton = page.locator('.animate-\\[shimmer_1\\.5s_infinite\\]');
-    
+
     // We expect loading skeleton to disappear eventually
     await expect(loadingSkeleton.first()).not.toBeVisible({ timeout: 5000 });
 
@@ -86,6 +86,133 @@ test.describe('CMovie - API Interception & Mocking Flow', () => {
     await expect(featuredHeading).not.toBeVisible();
 
     console.log('✅ API failure test passed: App handled 500 error without crashing the page.');
+  });
+
+
+
+  test('should show slow loading shimmer effect when API response is delayed (5s)', async ({ page }) => {
+    await page.route('**/v1/api/home', async route => {
+      // Delay response to simulate slow network
+      await new Promise(f => setTimeout(f, 5000));
+      await route.continue();
+    });
+    // Do not await the full load since we want to check the loading state
+    page.goto('/');
+
+    // Check if the loading skeleton (shimmer effect) is visible during the delay
+    const loadingSkeleton = page.locator('.animate-\\[shimmer_1\\.5s_infinite\\]');
+    await expect(loadingSkeleton.first()).toBeVisible({ timeout: 2000 });
+  });
+
+  test('should display Not Found Error UI when API returns 404', async ({ page }) => {
+    await page.route('**/danh-sach/phim-moi-cap-nhat*', route => {
+      route.fulfill({ status: 404, body: 'Not Found' });
+    });
+    await page.goto('/');
+
+    // Assert that a 404 error message or Not Found state is displayed to the user
+    const notFoundMessage = page.locator('text=/404|not found|không tìm thấy/i');
+    await expect(notFoundMessage.first()).toBeVisible();
+  });
+
+  test('should display Access Denied Error UI when API returns 403 Forbidden', async ({ page }) => {
+    await page.route('**/danh-sach/phim-moi-cap-nhat*', route => {
+      route.fulfill({ status: 403, body: 'Forbidden' });
+    });
+    await page.goto('/');
+
+    // Assert that a 403 error message or Access Denied state is displayed
+    const accessDeniedMessage = page.locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i');
+    await expect(accessDeniedMessage.first()).toBeVisible();
+  });
+
+  test('should not crash frontend when Backend returns malformed JSON string', async ({ page }) => {
+    await page.route('**/danh-sach/phim-moi-cap-nhat*', route => {
+      route.fulfill({ status: 200, contentType: 'application/json', body: '{ invalid_json: ' });
+    });
+    await page.goto('/');
+
+    // Page should still load layout elements (nav/header) without a white screen of death
+    await expect(page.locator('nav').or(page.locator('header')).first()).toBeVisible();
+
+    // Should gracefully show an error message or generic empty state
+    const errorState = page.locator('text=/lỗi|error|không thể tải/i');
+    await expect(errorState.or(page.locator('.empty-state'))).not.toBeHidden();
+  });
+
+  test('should display fallback image placeholder when API returns movie without thumbnail', async ({ page }) => {
+    await page.route('**/v1/api/home', route => {
+      const mockData = {
+        status: true,
+        data: { items: [{ _id: "1", name: "No Image Movie", slug: "no-image", thumb_url: "", poster_url: "" }] }
+      };
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(mockData) });
+    });
+    await page.goto('/');
+
+    // Find the image element and check that its src contains a fallback/placeholder identifier
+    const movieImage = page.locator('img[alt*="No Image Movie"]').or(page.locator('img').first());
+    await expect(movieImage).toBeVisible();
+
+    const src = await movieImage.getAttribute('src');
+    expect(src).toMatch(/default|placeholder|fallback|error|null/i);
+  });
+
+  test('should display network offline banner when internet connection drops entirely', async ({ page }) => {
+    // 1. Load the page normally first
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // 2. Simulate dropping the internet connection
+    await page.context().setOffline(true);
+
+    // 3. Trigger some network action or wait for offline detector to show banner
+    const offlineBanner = page.locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i');
+    await expect(offlineBanner.first()).toBeVisible();
+
+    // Clean up
+    await page.context().setOffline(false);
+  });
+
+  test('should handle null pagination parameters gracefully from backend', async ({ page }) => {
+    await page.route('**/danh-sach/phim-moi-cap-nhat*', route => {
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ items: [], pagination: null })
+      });
+    });
+    await page.goto('/');
+
+    // Pagination controls should not be visible or crash the page
+    const paginationControls = page.locator('.pagination, nav[aria-label="pagination"]');
+    await expect(paginationControls).not.toBeVisible();
+
+    // Should gracefully display empty items indicator
+    const noMoviesText = page.locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i');
+    await expect(noMoviesText.or(page.locator('.empty-state'))).not.toBeHidden();
+  });
+
+  test('should render movies correctly even with anomalous release dates (e.g. Year 3000)', async ({ page }) => {
+    await page.route('**/v1/api/home', route => {
+      const mockData = {
+        status: true,
+        data: { items: [{ _id: "2", name: "Future Movie", slug: "future-movie", year: 3000, thumb_url: "thumb.jpg", poster_url: "poster.jpg" }] }
+      };
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(mockData)
+      });
+    });
+    await page.goto('/');
+
+    // Ensure the anomalous year "3000" is rendered on the UI successfully
+    const yearElement = page.locator('text="3000"');
+    await expect(yearElement.first()).toBeAttached();
+    
+    const movieTitle = page.locator('text="Future Movie"');
+    await expect(movieTitle.first()).toBeAttached();
   });
 
 });

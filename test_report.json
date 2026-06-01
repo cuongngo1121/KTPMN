@@ -1,0 +1,3007 @@
+{
+  "config": {
+    "configFile": "/Users/cuong/vscode/tester/playwright.config.js",
+    "rootDir": "/Users/cuong/vscode/tester/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/Users/cuong/vscode/tester/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/cuong/vscode/tester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.60.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "api-mocking.spec.js",
+      "file": "api-mocking.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CMovie - API Interception & Mocking Flow",
+          "file": "api-mocking.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display mock movies when API returns successful custom data",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4423,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Playwright intercepted API: v1/api/home and returned mock data.\n"
+                        },
+                        {
+                          "text": "🔄 Playwright intercepted API: v1/api/home and returned mock data.\n"
+                        },
+                        {
+                          "text": "✅ Successful API mocking test passed: Custom movies rendered on screen.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:10.252Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-6d1d3-urns-successful-custom-data-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-8624f1bd4b340ebfb631",
+              "file": "api-mocking.spec.js",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "should handle API failure (500) gracefully and stop loading skeleton",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 466,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "⚠️ Playwright intercepted API: v1/api/home and simulated a 500 error.\n"
+                        },
+                        {
+                          "text": "✅ API failure test passed: App handled 500 error without crashing the page.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:14.935Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-bcea0-y-and-stop-loading-skeleton-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-552cc648717ef4cd29cc",
+              "file": "api-mocking.spec.js",
+              "line": 62,
+              "column": 3
+            },
+            {
+              "title": "should show slow loading shimmer effect when API response is delayed (5s)",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2141,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://c-movie.vercel.app/\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://c-movie.vercel.app/\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://c-movie.vercel.app/\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://c-movie.vercel.app/\"\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:104:43",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 43,
+                          "line": 104
+                        },
+                        "snippet": "  102 |     // Check if the loading skeleton (shimmer effect) is visible during the delay\n  103 |     const loadingSkeleton = page.locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]');\n> 104 |     await expect(loadingSkeleton.first()).toBeVisible({ timeout: 2000 });\n      |                                           ^\n  105 |   });\n  106 |\n  107 |   test('should display Not Found Error UI when API returns 404', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 43,
+                            "line": 104
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://c-movie.vercel.app/\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://c-movie.vercel.app/\"\u001b[22m\n\n\n  102 |     // Check if the loading skeleton (shimmer effect) is visible during the delay\n  103 |     const loadingSkeleton = page.locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]');\n> 104 |     await expect(loadingSkeleton.first()).toBeVisible({ timeout: 2000 });\n      |                                           ^\n  105 |   });\n  106 |\n  107 |   test('should display Not Found Error UI when API returns 404', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:104:43"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:15.412Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-dc329-API-response-is-delayed-5s--chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-dc329-API-response-is-delayed-5s--chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 43,
+                        "line": 104
+                      }
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2314,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://c-movie.vercel.app/\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://c-movie.vercel.app/\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://c-movie.vercel.app/\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://c-movie.vercel.app/\"\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:104:43",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 43,
+                          "line": 104
+                        },
+                        "snippet": "  102 |     // Check if the loading skeleton (shimmer effect) is visible during the delay\n  103 |     const loadingSkeleton = page.locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]');\n> 104 |     await expect(loadingSkeleton.first()).toBeVisible({ timeout: 2000 });\n      |                                           ^\n  105 |   });\n  106 |\n  107 |   test('should display Not Found Error UI when API returns 404', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 43,
+                            "line": 104
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\nExpected: visible\nTimeout: 2000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 2000ms\u001b[22m\n\u001b[2m  - waiting for locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://c-movie.vercel.app/\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://c-movie.vercel.app/\"\u001b[22m\n\n\n  102 |     // Check if the loading skeleton (shimmer effect) is visible during the delay\n  103 |     const loadingSkeleton = page.locator('.animate-\\\\[shimmer_1\\\\.5s_infinite\\\\]');\n> 104 |     await expect(loadingSkeleton.first()).toBeVisible({ timeout: 2000 });\n      |                                           ^\n  105 |   });\n  106 |\n  107 |   test('should display Not Found Error UI when API returns 404', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:104:43"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:42:17.917Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-dc329-API-response-is-delayed-5s--chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-dc329-API-response-is-delayed-5s--chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-dc329-API-response-is-delayed-5s--chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 43,
+                        "line": 104
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-defee852968bcff93edd",
+              "file": "api-mocking.spec.js",
+              "line": 93,
+              "column": 3
+            },
+            {
+              "title": "should display Not Found Error UI when API returns 404",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5606,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/404|not found|không tìm thấy/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/404|not found|không tìm thấy/i').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/404|not found|không tìm thấy/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/404|not found|không tìm thấy/i').first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:115:43",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 43,
+                          "line": 115
+                        },
+                        "snippet": "  113 |     // Assert that a 404 error message or Not Found state is displayed to the user\n  114 |     const notFoundMessage = page.locator('text=/404|not found|không tìm thấy/i');\n> 115 |     await expect(notFoundMessage.first()).toBeVisible();\n      |                                           ^\n  116 |   });\n  117 |\n  118 |   test('should display Access Denied Error UI when API returns 403 Forbidden', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 43,
+                            "line": 115
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/404|not found|không tìm thấy/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/404|not found|không tìm thấy/i').first()\u001b[22m\n\n\n  113 |     // Assert that a 404 error message or Not Found state is displayed to the user\n  114 |     const notFoundMessage = page.locator('text=/404|not found|không tìm thấy/i');\n> 115 |     await expect(notFoundMessage.first()).toBeVisible();\n      |                                           ^\n  116 |   });\n  117 |\n  118 |   test('should display Access Denied Error UI when API returns 403 Forbidden', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:115:43"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:20.763Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-defa4-ror-UI-when-API-returns-404-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-defa4-ror-UI-when-API-returns-404-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 43,
+                        "line": 115
+                      }
+                    },
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6726,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/404|not found|không tìm thấy/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/404|not found|không tìm thấy/i').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/404|not found|không tìm thấy/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/404|not found|không tìm thấy/i').first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:115:43",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 43,
+                          "line": 115
+                        },
+                        "snippet": "  113 |     // Assert that a 404 error message or Not Found state is displayed to the user\n  114 |     const notFoundMessage = page.locator('text=/404|not found|không tìm thấy/i');\n> 115 |     await expect(notFoundMessage.first()).toBeVisible();\n      |                                           ^\n  116 |   });\n  117 |\n  118 |   test('should display Access Denied Error UI when API returns 403 Forbidden', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 43,
+                            "line": 115
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/404|not found|không tìm thấy/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/404|not found|không tìm thấy/i').first()\u001b[22m\n\n\n  113 |     // Assert that a 404 error message or Not Found state is displayed to the user\n  114 |     const notFoundMessage = page.locator('text=/404|not found|không tìm thấy/i');\n> 115 |     await expect(notFoundMessage.first()).toBeVisible();\n      |                                           ^\n  116 |   });\n  117 |\n  118 |   test('should display Access Denied Error UI when API returns 403 Forbidden', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:115:43"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:42:26.895Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-defa4-ror-UI-when-API-returns-404-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-defa4-ror-UI-when-API-returns-404-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-defa4-ror-UI-when-API-returns-404-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 43,
+                        "line": 115
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-241b3e48d04a0f3e2de5",
+              "file": "api-mocking.spec.js",
+              "line": 107,
+              "column": 3
+            },
+            {
+              "title": "should display Access Denied Error UI when API returns 403 Forbidden",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5483,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:126:47",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 47,
+                          "line": 126
+                        },
+                        "snippet": "  124 |     // Assert that a 403 error message or Access Denied state is displayed\n  125 |     const accessDeniedMessage = page.locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i');\n> 126 |     await expect(accessDeniedMessage.first()).toBeVisible();\n      |                                               ^\n  127 |   });\n  128 |\n  129 |   test('should not crash frontend when Backend returns malformed JSON string', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 47,
+                            "line": 126
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\u001b[22m\n\n\n  124 |     // Assert that a 403 error message or Access Denied state is displayed\n  125 |     const accessDeniedMessage = page.locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i');\n> 126 |     await expect(accessDeniedMessage.first()).toBeVisible();\n      |                                               ^\n  127 |   });\n  128 |\n  129 |   test('should not crash frontend when Backend returns malformed JSON string', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:126:47"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:34.724Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-abb8c-n-API-returns-403-Forbidden-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-abb8c-n-API-returns-403-Forbidden-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 47,
+                        "line": 126
+                      }
+                    },
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6589,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:126:47",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 47,
+                          "line": 126
+                        },
+                        "snippet": "  124 |     // Assert that a 403 error message or Access Denied state is displayed\n  125 |     const accessDeniedMessage = page.locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i');\n> 126 |     await expect(accessDeniedMessage.first()).toBeVisible();\n      |                                               ^\n  127 |   });\n  128 |\n  129 |   test('should not crash frontend when Backend returns malformed JSON string', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 47,
+                            "line": 126
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i').first()\u001b[22m\n\n\n  124 |     // Assert that a 403 error message or Access Denied state is displayed\n  125 |     const accessDeniedMessage = page.locator('text=/403|forbidden|access denied|từ chối truy cập|không có quyền/i');\n> 126 |     await expect(accessDeniedMessage.first()).toBeVisible();\n      |                                               ^\n  127 |   });\n  128 |\n  129 |   test('should not crash frontend when Backend returns malformed JSON string', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:126:47"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:42:40.722Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-abb8c-n-API-returns-403-Forbidden-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-abb8c-n-API-returns-403-Forbidden-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-abb8c-n-API-returns-403-Forbidden-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 47,
+                        "line": 126
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-1191d0792bc952208b85",
+              "file": "api-mocking.spec.js",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "should not crash frontend when Backend returns malformed JSON string",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4286,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:48.466Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-9e7df-turns-malformed-JSON-string-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-7670cabba3f1790bdf9d",
+              "file": "api-mocking.spec.js",
+              "line": 129,
+              "column": 3
+            },
+            {
+              "title": "should display fallback image placeholder when API returns movie without thumbnail",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 4535,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\nExpected: visible\nError: strict mode violation: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first()) resolved to 7 elements:\n    1) <img src=\"\" loading=\"lazy\" data-v-33727d30=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover\"/> aka getByAltText('No Image Movie').first()\n    2) <img src=\"\" loading=\"lazy\" data-v-d165e689=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover object-center animate-ken-burns\"/> aka getByRole('img', { name: 'No Image Movie' }).first()\n    3) <img loading=\"lazy\" data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full aspect-[2/3] object-cover\"/> aka getByAltText('No Image Movie').nth(2)\n    4) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(3)\n    5) <img data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(1)\n    6) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(5)\n    7) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(2)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\nExpected: visible\nError: strict mode violation: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first()) resolved to 7 elements:\n    1) <img src=\"\" loading=\"lazy\" data-v-33727d30=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover\"/> aka getByAltText('No Image Movie').first()\n    2) <img src=\"\" loading=\"lazy\" data-v-d165e689=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover object-center animate-ken-burns\"/> aka getByRole('img', { name: 'No Image Movie' }).first()\n    3) <img loading=\"lazy\" data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full aspect-[2/3] object-cover\"/> aka getByAltText('No Image Movie').nth(2)\n    4) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(3)\n    5) <img data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(1)\n    6) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(5)\n    7) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(2)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:155:30",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 30,
+                          "line": 155
+                        },
+                        "snippet": "  153 |     // Find the image element and check that its src contains a fallback/placeholder identifier\n  154 |     const movieImage = page.locator('img[alt*=\"No Image Movie\"]').or(page.locator('img').first());\n> 155 |     await expect(movieImage).toBeVisible();\n      |                              ^\n  156 |\n  157 |     const src = await movieImage.getAttribute('src');\n  158 |     expect(src).toMatch(/default|placeholder|fallback|error|null/i);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 30,
+                            "line": 155
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\nExpected: visible\nError: strict mode violation: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first()) resolved to 7 elements:\n    1) <img src=\"\" loading=\"lazy\" data-v-33727d30=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover\"/> aka getByAltText('No Image Movie').first()\n    2) <img src=\"\" loading=\"lazy\" data-v-d165e689=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover object-center animate-ken-burns\"/> aka getByRole('img', { name: 'No Image Movie' }).first()\n    3) <img loading=\"lazy\" data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full aspect-[2/3] object-cover\"/> aka getByAltText('No Image Movie').nth(2)\n    4) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(3)\n    5) <img data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(1)\n    6) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(5)\n    7) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(2)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\u001b[22m\n\n\n  153 |     // Find the image element and check that its src contains a fallback/placeholder identifier\n  154 |     const movieImage = page.locator('img[alt*=\"No Image Movie\"]').or(page.locator('img').first());\n> 155 |     await expect(movieImage).toBeVisible();\n      |                              ^\n  156 |\n  157 |     const src = await movieImage.getAttribute('src');\n  158 |     expect(src).toMatch(/default|placeholder|fallback|error|null/i);\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:155:30"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:42:52.882Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-a9cab-rns-movie-without-thumbnail-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-a9cab-rns-movie-without-thumbnail-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 30,
+                        "line": 155
+                      }
+                    },
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 4782,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\nExpected: visible\nError: strict mode violation: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first()) resolved to 7 elements:\n    1) <img src=\"\" loading=\"lazy\" data-v-33727d30=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover\"/> aka getByAltText('No Image Movie').first()\n    2) <img src=\"\" loading=\"lazy\" data-v-d165e689=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover object-center animate-ken-burns\"/> aka getByRole('img', { name: 'No Image Movie' }).first()\n    3) <img loading=\"lazy\" data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full aspect-[2/3] object-cover\"/> aka getByAltText('No Image Movie').nth(2)\n    4) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(3)\n    5) <img data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(1)\n    6) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(5)\n    7) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(2)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\nExpected: visible\nError: strict mode violation: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first()) resolved to 7 elements:\n    1) <img src=\"\" loading=\"lazy\" data-v-33727d30=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover\"/> aka getByAltText('No Image Movie').first()\n    2) <img src=\"\" loading=\"lazy\" data-v-d165e689=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover object-center animate-ken-burns\"/> aka getByRole('img', { name: 'No Image Movie' }).first()\n    3) <img loading=\"lazy\" data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full aspect-[2/3] object-cover\"/> aka getByAltText('No Image Movie').nth(2)\n    4) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(3)\n    5) <img data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(1)\n    6) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(5)\n    7) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(2)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:155:30",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 30,
+                          "line": 155
+                        },
+                        "snippet": "  153 |     // Find the image element and check that its src contains a fallback/placeholder identifier\n  154 |     const movieImage = page.locator('img[alt*=\"No Image Movie\"]').or(page.locator('img').first());\n> 155 |     await expect(movieImage).toBeVisible();\n      |                              ^\n  156 |\n  157 |     const src = await movieImage.getAttribute('src');\n  158 |     expect(src).toMatch(/default|placeholder|fallback|error|null/i);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 30,
+                            "line": 155
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\nExpected: visible\nError: strict mode violation: locator('img[alt*=\"No Image Movie\"]').or(locator('img').first()) resolved to 7 elements:\n    1) <img src=\"\" loading=\"lazy\" data-v-33727d30=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover\"/> aka getByAltText('No Image Movie').first()\n    2) <img src=\"\" loading=\"lazy\" data-v-d165e689=\"\" alt=\"No Image Movie\" class=\"w-full h-full object-cover object-center animate-ken-burns\"/> aka getByRole('img', { name: 'No Image Movie' }).first()\n    3) <img loading=\"lazy\" data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full aspect-[2/3] object-cover\"/> aka getByAltText('No Image Movie').nth(2)\n    4) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(3)\n    5) <img data-v-16daf8ff=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(1)\n    6) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByAltText('No Image Movie').nth(5)\n    7) <img loading=\"lazy\" data-v-8019de98=\"\" alt=\"No Image Movie\" src=\"/placeholder-movie.jpg\" class=\"w-full h-full object-cover md:transition-transform md:duration-500 md:group-hover:scale-105\"/> aka getByRole('img', { name: 'No Image Movie' }).nth(2)\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('img[alt*=\"No Image Movie\"]').or(locator('img').first())\u001b[22m\n\n\n  153 |     // Find the image element and check that its src contains a fallback/placeholder identifier\n  154 |     const movieImage = page.locator('img[alt*=\"No Image Movie\"]').or(page.locator('img').first());\n> 155 |     await expect(movieImage).toBeVisible();\n      |                              ^\n  156 |\n  157 |     const src = await movieImage.getAttribute('src');\n  158 |     expect(src).toMatch(/default|placeholder|fallback|error|null/i);\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:155:30"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:42:57.773Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-a9cab-rns-movie-without-thumbnail-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-a9cab-rns-movie-without-thumbnail-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-a9cab-rns-movie-without-thumbnail-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 30,
+                        "line": 155
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-f85a8d4dde3fdfc7ebd1",
+              "file": "api-mocking.spec.js",
+              "line": 143,
+              "column": 3
+            },
+            {
+              "title": "should display network offline banner when internet connection drops entirely",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6138,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:171:41",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 41,
+                          "line": 171
+                        },
+                        "snippet": "  169 |     // 3. Trigger some network action or wait for offline detector to show banner\n  170 |     const offlineBanner = page.locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i');\n> 171 |     await expect(offlineBanner.first()).toBeVisible();\n      |                                         ^\n  172 |\n  173 |     // Clean up\n  174 |     await page.context().setOffline(false);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 41,
+                            "line": 171
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\u001b[22m\n\n\n  169 |     // 3. Trigger some network action or wait for offline detector to show banner\n  170 |     const offlineBanner = page.locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i');\n> 171 |     await expect(offlineBanner.first()).toBeVisible();\n      |                                         ^\n  172 |\n  173 |     // Clean up\n  174 |     await page.context().setOffline(false);\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:171:41"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:43:03.180Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-c9eac-t-connection-drops-entirely-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-c9eac-t-connection-drops-entirely-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 41,
+                        "line": 171
+                      }
+                    },
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6290,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:171:41",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 41,
+                          "line": 171
+                        },
+                        "snippet": "  169 |     // 3. Trigger some network action or wait for offline detector to show banner\n  170 |     const offlineBanner = page.locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i');\n> 171 |     await expect(offlineBanner.first()).toBeVisible();\n      |                                         ^\n  172 |\n  173 |     // Clean up\n  174 |     await page.context().setOffline(false);"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 41,
+                            "line": 171
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i').first()\u001b[22m\n\n\n  169 |     // 3. Trigger some network action or wait for offline detector to show banner\n  170 |     const offlineBanner = page.locator('text=/offline|không có kết nối mạng|mất mạng|no internet/i');\n> 171 |     await expect(offlineBanner.first()).toBeVisible();\n      |                                         ^\n  172 |\n  173 |     // Clean up\n  174 |     await page.context().setOffline(false);\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:171:41"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:43:09.801Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-c9eac-t-connection-drops-entirely-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-c9eac-t-connection-drops-entirely-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-c9eac-t-connection-drops-entirely-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 41,
+                        "line": 171
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-31436c55863ba3820c92",
+              "file": "api-mocking.spec.js",
+              "line": 161,
+              "column": 3
+            },
+            {
+              "title": "should handle null pagination parameters gracefully from backend",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5638,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\nExpected: not hidden\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\nExpected: not hidden\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:193:69",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 69,
+                          "line": 193
+                        },
+                        "snippet": "  191 |     // Should gracefully display empty items indicator\n  192 |     const noMoviesText = page.locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i');\n> 193 |     await expect(noMoviesText.or(page.locator('.empty-state'))).not.toBeHidden();\n      |                                                                     ^\n  194 |   });\n  195 |\n  196 |   test('should render movies correctly even with anomalous release dates (e.g. Year 3000)', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 69,
+                            "line": 193
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\nExpected: not hidden\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\u001b[22m\n\n\n  191 |     // Should gracefully display empty items indicator\n  192 |     const noMoviesText = page.locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i');\n> 193 |     await expect(noMoviesText.or(page.locator('.empty-state'))).not.toBeHidden();\n      |                                                                     ^\n  194 |   });\n  195 |\n  196 |   test('should render movies correctly even with anomalous release dates (e.g. Year 3000)', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:193:69"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:43:16.639Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-9d75d-ers-gracefully-from-backend-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-9d75d-ers-gracefully-from-backend-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 69,
+                        "line": 193
+                      }
+                    },
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6727,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\nExpected: not hidden\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\nExpected: not hidden\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:193:69",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                          "column": 69,
+                          "line": 193
+                        },
+                        "snippet": "  191 |     // Should gracefully display empty items indicator\n  192 |     const noMoviesText = page.locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i');\n> 193 |     await expect(noMoviesText.or(page.locator('.empty-state'))).not.toBeHidden();\n      |                                                                     ^\n  194 |   });\n  195 |\n  196 |   test('should render movies correctly even with anomalous release dates (e.g. Year 3000)', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                            "column": 69,
+                            "line": 193
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).not.\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\nExpected: not hidden\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"not toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i').or(locator('.empty-state'))\u001b[22m\n\n\n  191 |     // Should gracefully display empty items indicator\n  192 |     const noMoviesText = page.locator('text=/chưa có phim|không có dữ liệu|trống|no movies/i');\n> 193 |     await expect(noMoviesText.or(page.locator('.empty-state'))).not.toBeHidden();\n      |                                                                     ^\n  194 |   });\n  195 |\n  196 |   test('should render movies correctly even with anomalous release dates (e.g. Year 3000)', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/api-mocking.spec.js:193:69"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:43:22.793Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-9d75d-ers-gracefully-from-backend-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-9d75d-ers-gracefully-from-backend-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-9d75d-ers-gracefully-from-backend-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/api-mocking.spec.js",
+                        "column": 69,
+                        "line": 193
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-65952ad09c5ec1e331d9",
+              "file": "api-mocking.spec.js",
+              "line": 177,
+              "column": 3
+            },
+            {
+              "title": "should render movies correctly even with anomalous release dates (e.g. Year 3000)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4314,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:43:30.565Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/api-mocking-CMovie---API-I-d3b81-elease-dates-e-g-Year-3000--chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d3fc9da5f446c3216eb-fb4e25169ec378f7427e",
+              "file": "api-mocking.spec.js",
+              "line": 196,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "bookmarks.spec.js",
+      "file": "bookmarks.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CMovie - Bookmarks & Watchlist Flow (Tủ Phim)",
+          "file": "bookmarks.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should verify empty state, add a movie to bookmarks, verify it in watchlist, and remove it",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 15302,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Successfully navigated to home page via explore button.\n"
+                        },
+                        {
+                          "text": "First movie card name on home: HD\n"
+                        },
+                        {
+                          "text": "Movie detail page loaded: https://c-movie.vercel.app/movie/sherlock-va-con-gai\n"
+                        },
+                        {
+                          "text": "Clicked bookmark button.\n"
+                        },
+                        {
+                          "text": "Navigated back to movie detail from bookmarks page.\n"
+                        },
+                        {
+                          "text": "Clicked bookmark button again to remove bookmark.\n"
+                        },
+                        {
+                          "text": "Watchlist addition and removal E2E flow verified successfully.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:43:35.027Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-ae3f8--in-watchlist-and-remove-it-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-0e17834682034cea0268",
+              "file": "bookmarks.spec.js",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "should allow adding multiple distinct movies to bookmarks rapidly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 15404,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:43:50.339Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-65f86-movies-to-bookmarks-rapidly-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-adfde58eede06eda272e",
+              "file": "bookmarks.spec.js",
+              "line": 83,
+              "column": 3
+            },
+            {
+              "title": "should reflect exact bookmark count in the bookmarks page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 10115,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:44:05.750Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-5877c-count-in-the-bookmarks-page-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-cbb0f1a383b5a534c2f2",
+              "file": "bookmarks.spec.js",
+              "line": 106,
+              "column": 3
+            },
+            {
+              "title": "should allow toggling bookmark directly from the homepage on mobile viewport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 12630,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:44:15.871Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-c6362-homepage-on-mobile-viewport-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-a382c89e368a0470f600",
+              "file": "bookmarks.spec.js",
+              "line": 121,
+              "column": 3
+            },
+            {
+              "title": "should persist bookmarks data in LocalStorage across page reloads (F5)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:44:28.507Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-88151-age-across-page-reloads-F5--chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-dab45ef587e94c1f5c38",
+              "file": "bookmarks.spec.js",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "should redirect to correct movie watch page when clicking a bookmarked item",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9522,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:44:41.638Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-18f3a--clicking-a-bookmarked-item-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-12357d8968e97e476a94",
+              "file": "bookmarks.spec.js",
+              "line": 162,
+              "column": 3
+            },
+            {
+              "title": "should allow toggling bookmark from homepage via desktop hover popup",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 11868,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:44:51.166Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-7684c-age-via-desktop-hover-popup-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-17a0f78080c6418aec8a",
+              "file": "bookmarks.spec.js",
+              "line": 180,
+              "column": 3
+            },
+            {
+              "title": "should prevent duplicate movie entries in bookmarks state",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5856,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:03.043Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-bb216--entries-in-bookmarks-state-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-16fe6406e474bf9c4720",
+              "file": "bookmarks.spec.js",
+              "line": 213,
+              "column": 3
+            },
+            {
+              "title": "should render bookmarks grid correctly on Mobile Viewport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9413,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:08.914Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-cd0ab-orrectly-on-Mobile-Viewport-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-61c93dbc88001671d89e",
+              "file": "bookmarks.spec.js",
+              "line": 234,
+              "column": 3
+            },
+            {
+              "title": "should render bookmarks grid correctly on Tablet Viewport",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 9476,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:18.338Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/bookmarks-CMovie---Bookmar-3edb0-orrectly-on-Tablet-Viewport-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9d0a025d643e36b14bb0-884914317e8f93708a7d",
+              "file": "bookmarks.spec.js",
+              "line": 252,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "categories.spec.js",
+      "file": "categories.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CMovie - Categories & Filtering (Filtering/Categories)",
+          "file": "categories.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should filter movies by categories and apply desktop filters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5109,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Found 5 filter dropdowns on desktop.\n"
+                        },
+                        {
+                          "text": "Selected country: Trung Quốc\n"
+                        },
+                        {
+                          "text": "Filtered results show 24 movies.\n"
+                        },
+                        {
+                          "text": "Selected genre: Hành Động\n"
+                        },
+                        {
+                          "text": "Clicked reset filters button.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:27.843Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-6dbb8-s-and-apply-desktop-filters-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-b80a7e47adab1da4b106",
+              "file": "categories.spec.js",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "should display mobile drawer filters on mobile screens",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5255,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Mobile filters drawer opened.\n"
+                        },
+                        {
+                          "text": "Selected country: Hàn Quốc inside mobile drawer.\n"
+                        },
+                        {
+                          "text": "Mobile filters drawer closed.\n"
+                        },
+                        {
+                          "text": "Mobile results count: 20\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:32.962Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-790a7-r-filters-on-mobile-screens-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-5efec801a3db4a92e048",
+              "file": "categories.spec.js",
+              "line": 63,
+              "column": 3
+            },
+            {
+              "title": "should correctly filter and display \"Hài Hước\" movies",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5699,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:38.226Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-72dc6-and-display-Hài-Hước-movies-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-df8f6f84fce895b2ad1a",
+              "file": "categories.spec.js",
+              "line": 105,
+              "column": 3
+            },
+            {
+              "title": "should correctly filter and display \"Kinh Dị\" movies",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6244,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:43.936Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-a5543--and-display-Kinh-Dị-movies-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-3d59ac2390892f2e85f4",
+              "file": "categories.spec.js",
+              "line": 123,
+              "column": 3
+            },
+            {
+              "title": "should filter by country \"Hàn Quốc\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6252,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:50.189Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-328fc-filter-by-country-Hàn-Quốc--chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-99e17f644fc40b211f2f",
+              "file": "categories.spec.js",
+              "line": 141,
+              "column": 3
+            },
+            {
+              "title": "should filter by release year \"2023\"",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5374,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:45:56.453Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-01b40-ilter-by-release-year-2023--chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-5ea883e59443159bd333",
+              "file": "categories.spec.js",
+              "line": 159,
+              "column": 3
+            },
+            {
+              "title": "should retain filter settings after changing one filter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5629,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:01.841Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-398bc-s-after-changing-one-filter-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-d00913cfb76760ca682c",
+              "file": "categories.spec.js",
+              "line": 188,
+              "column": 3
+            },
+            {
+              "title": "should navigate to Page 2 of a category list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4271,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:07.486Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-b9248-o-Page-2-of-a-category-list-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-06e3ea8e7fadaabccb97",
+              "file": "categories.spec.js",
+              "line": 222,
+              "column": 3
+            },
+            {
+              "title": "should navigate to movie detail page and return back to category page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6950,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Navigating to movie detail page for: Phổi Sắt\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:11.769Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-ee5f2-eturn-back-to-category-page-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-58dcad88f5a71e4fd6c5",
+              "file": "categories.spec.js",
+              "line": 276,
+              "column": 3
+            },
+            {
+              "title": "should display \"no movies found\" state for an impossible category combination",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4123,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "REQ: GET https://c-movie.vercel.app/category/khong-co-the-loai-nay\n"
+                        },
+                        {
+                          "text": "REQ: GET https://c-movie.vercel.app/assets/index-BRHMenE-.js\n"
+                        },
+                        {
+                          "text": "REQ: GET https://c-movie.vercel.app/assets/index-B8DCx80K.css\n"
+                        },
+                        {
+                          "text": "REQ: GET https://ophim1.com/v1/api/home\n"
+                        },
+                        {
+                          "text": "REQ: GET https://ophim1.com/v1/api/danh-sach/phim-bo?page=1&limit=24\n"
+                        },
+                        {
+                          "text": "REQ: GET https://ophim1.com/v1/api/danh-sach/phim-le?page=1&limit=24\n"
+                        },
+                        {
+                          "text": "REQ: GET https://ophim1.com/v1/api/danh-sach/phim-chieu-rap?page=1&limit=24\n"
+                        },
+                        {
+                          "text": "REQ: GET https://ophim1.com/v1/api/danh-sach/hoat-hinh?page=1&limit=24\n"
+                        },
+                        {
+                          "text": "REQ: GET https://c-movie.vercel.app/assets/CategoryView-e0NzmLAN.js\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: %c ArtPlayer %c 5.3.0 %c https://artplayer.org color: #fff; background: #5f5f5f color: #fff; background: #4bc729 \n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Home movies loaded\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Loaded first page for phim-bo\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Loaded first page for phim-le\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Loaded first page for phim-chieu-rap\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Loaded first page for hoat-hinh\n"
+                        },
+                        {
+                          "text": "REQ: GET https://ophim1.com/v1/api/danh-sach/khong-co-the-loai-nay?page=1&limit=1000\n"
+                        },
+                        {
+                          "text": "INTERCEPTED: https://ophim1.com/v1/api/danh-sach/khong-co-the-loai-nay?page=1&limit=1000\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Loaded 0 movies for khong-co-the-loai-nay\n"
+                        },
+                        {
+                          "text": "BROWSER LOG: ✅ Loaded 0 movies for khong-co-the-loai-nay\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:18.732Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/categories-CMovie---Catego-d9156-ssible-category-combination-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "1d7e59cb803498b0272f-97f2b7d316f1b176c587",
+              "file": "categories.spec.js",
+              "line": 303,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "playback-responsive.spec.js",
+      "file": "playback-responsive.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CMovie - Video Playback & Responsive UI",
+          "file": "playback-responsive.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should load details, navigate to watch page, play video, and switch episodes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6107,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Movie detail loaded: https://c-movie.vercel.app/movie/sherlock-va-con-gai\n"
+                        },
+                        {
+                          "text": "Movie Title:  Phim Chùa \n"
+                        },
+                        {
+                          "text": "Watch page loaded: https://c-movie.vercel.app/watch/sherlock-va-con-gai\n"
+                        },
+                        {
+                          "text": "Video element container loaded successfully.\n"
+                        },
+                        {
+                          "text": "Found 1 episodes in sidebar.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:22.885Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-d3e2a-y-video-and-switch-episodes-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-0c5e9df1529dbcd49f29",
+              "file": "playback-responsive.spec.js",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "should display responsive layouts properly on Mobile Portrait",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6005,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Mobile portrait layout verified successfully (episode list adjusted to wider grid columns).\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:29.008Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-7db0d-properly-on-Mobile-Portrait-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-9b6b2ed18c3a1c94f87d",
+              "file": "playback-responsive.spec.js",
+              "line": 78,
+              "column": 3
+            },
+            {
+              "title": "should navigate correctly when clicking tabs on the mobile bottom navigation dock",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4177,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Successfully navigated to Phim Lẻ via bottom nav.\n"
+                        },
+                        {
+                          "text": "Successfully navigated to Phim Bộ via bottom nav.\n"
+                        },
+                        {
+                          "text": "Successfully navigated back to Trang chủ via bottom nav.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:35.022Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-0c992-bile-bottom-navigation-dock-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-8200512167fc8e0677c1",
+              "file": "playback-responsive.spec.js",
+              "line": 107,
+              "column": 3
+            },
+            {
+              "title": "should trigger immersive fullscreen view on Mobile Landscape",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6094,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Player Section bounding box: width=812, height=375\n"
+                        },
+                        {
+                          "text": "Aspect Ratio toolbar is visible on Mobile Landscape.\n"
+                        },
+                        {
+                          "text": "Clicked \"Đầy\" aspect ratio mode.\n"
+                        },
+                        {
+                          "text": "Mobile landscape immersive controls and responsive styling verified.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:39.206Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-69da0-en-view-on-Mobile-Landscape-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-f5ce79771d85f3b2363a",
+              "file": "playback-responsive.spec.js",
+              "line": 144,
+              "column": 3
+            },
+            {
+              "title": "should allow user to submit a comment on movie watch page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 12397,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/playback-responsive.spec.js:215:32",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/playback-responsive.spec.js",
+                          "column": 32,
+                          "line": 215
+                        },
+                        "snippet": "  213 |     // Assert success toast - this WILL FAIL because there is no real backend\n  214 |     const successToast = page.locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first();\n> 215 |     await expect(successToast).toBeVisible({ timeout: 5000 });\n      |                                ^\n  216 |   });\n  217 |\n  218 |   test('should highlight the active episode button when switching episodes', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/playback-responsive.spec.js",
+                            "column": 32,
+                            "line": 215
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\u001b[22m\n\n\n  213 |     // Assert success toast - this WILL FAIL because there is no real backend\n  214 |     const successToast = page.locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first();\n> 215 |     await expect(successToast).toBeVisible({ timeout: 5000 });\n      |                                ^\n  216 |   });\n  217 |\n  218 |   test('should highlight the active episode button when switching episodes', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/playback-responsive.spec.js:215:32"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:46:45.306Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-3b6ca-comment-on-movie-watch-page-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-3b6ca-comment-on-movie-watch-page-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/playback-responsive.spec.js",
+                        "column": 32,
+                        "line": 215
+                      }
+                    },
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 40769,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/playback-responsive.spec.js:215:32",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/playback-responsive.spec.js",
+                          "column": 32,
+                          "line": 215
+                        },
+                        "snippet": "  213 |     // Assert success toast - this WILL FAIL because there is no real backend\n  214 |     const successToast = page.locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first();\n> 215 |     await expect(successToast).toBeVisible({ timeout: 5000 });\n      |                                ^\n  216 |   });\n  217 |\n  218 |   test('should highlight the active episode button when switching episodes', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/playback-responsive.spec.js",
+                            "column": 32,
+                            "line": 215
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first()\u001b[22m\n\n\n  213 |     // Assert success toast - this WILL FAIL because there is no real backend\n  214 |     const successToast = page.locator('.toast-success, [class*=\"toast\"]').filter({ hasText: /thành công|success/i }).first();\n> 215 |     await expect(successToast).toBeVisible({ timeout: 5000 });\n      |                                ^\n  216 |   });\n  217 |\n  218 |   test('should highlight the active episode button when switching episodes', async ({ page }) => {\n    at /Users/cuong/vscode/tester/tests/playback-responsive.spec.js:215:32"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:46:58.465Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-3b6ca-comment-on-movie-watch-page-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-3b6ca-comment-on-movie-watch-page-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-3b6ca-comment-on-movie-watch-page-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/playback-responsive.spec.js",
+                        "column": 32,
+                        "line": 215
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-1c0a0156e2fab20451bc",
+              "file": "playback-responsive.spec.js",
+              "line": 195,
+              "column": 3
+            },
+            {
+              "title": "should highlight the active episode button when switching episodes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 7270,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:47:43.776Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-e369d-ton-when-switching-episodes-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-d11aa5442a6b9927a797",
+              "file": "playback-responsive.spec.js",
+              "line": 218,
+              "column": 3
+            },
+            {
+              "title": "should navigate back to movie detail page via breadcrumb on watch page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5937,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:47:51.314Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-1bebb-ia-breadcrumb-on-watch-page-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-6f2318035807f6eac948",
+              "file": "playback-responsive.spec.js",
+              "line": 240,
+              "column": 3
+            },
+            {
+              "title": "should display correct page title and movie title on watch page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6727,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:47:57.277Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-90bf1-d-movie-title-on-watch-page-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-74b4e3014412eaa58af6",
+              "file": "playback-responsive.spec.js",
+              "line": 257,
+              "column": 3
+            },
+            {
+              "title": "should gracefully handle empty episodes array without crashing video player component",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5056,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:48:04.032Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-4e3ba-hing-video-player-component-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-106c257a14e894c45b1a",
+              "file": "playback-responsive.spec.js",
+              "line": 275,
+              "column": 3
+            },
+            {
+              "title": "should display comment section with textarea and submit button on watch page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6307,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:48:09.106Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/playback-responsive-CMovie-cced1-submit-button-on-watch-page-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "eb229c7f878d5d0735b2-ba300ca690f436dc2455",
+              "file": "playback-responsive.spec.js",
+              "line": 301,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "search.spec.js",
+      "file": "search.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "CMovie - Search & Real-time Results Flow",
+          "file": "search.spec.js",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should open search bar, perform real-time search, and display matches",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5864,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Search for \"Đại\" returned 5 real-time items.\n"
+                        },
+                        {
+                          "text": "First result title: Đại Trinh Phá\n"
+                        },
+                        {
+                          "text": "Successfully navigated to movie details: https://c-movie.vercel.app/movie/dai-trinh-pha\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:48:15.453Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-b1fb4--search-and-display-matches-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-b42dc0605c1371a12f25",
+              "file": "search.spec.js",
+              "line": 12,
+              "column": 3
+            },
+            {
+              "title": "should display \"no results\" state for non-existent keywords",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6115,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "No results message: \"Không tìm thấy kết quả\"\n"
+                        },
+                        {
+                          "text": "No results state verified successfully.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:48:21.336Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-da402-e-for-non-existent-keywords-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-55280b3228c19befbb7e",
+              "file": "search.spec.js",
+              "line": 59,
+              "column": 3
+            },
+            {
+              "title": "should be able to clear search query using close button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5911,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Search clearing functionality verified successfully.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:48:27.476Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-eda0b-ch-query-using-close-button-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-d64da4bb928a26dae8ed",
+              "file": "search.spec.js",
+              "line": 79,
+              "column": 3
+            },
+            {
+              "title": "should display initial welcome state on mobile when clicking search tab on bottom navigation dock",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10101,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/search.spec.js:122:32",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/search.spec.js",
+                          "column": 32,
+                          "line": 122
+                        },
+                        "snippet": "  120 |     \n  121 |     // We assert this is visible to capture the bug (it will fail because current code shows the empty state instead)\n> 122 |     await expect(welcomeTitle).toBeVisible();\n      |                                ^\n  123 |\n  124 |     // 6. We expect the empty/error state is NOT visible when we haven't typed anything\n  125 |     const emptyStateTitle = page.locator('h3', { hasText: 'Tìm hoài không thấy!' });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/search.spec.js",
+                            "column": 32,
+                            "line": 122
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\u001b[22m\n\n\n  120 |     \n  121 |     // We assert this is visible to capture the bug (it will fail because current code shows the empty state instead)\n> 122 |     await expect(welcomeTitle).toBeVisible();\n      |                                ^\n  123 |\n  124 |     // 6. We expect the empty/error state is NOT visible when we haven't typed anything\n  125 |     const emptyStateTitle = page.locator('h3', { hasText: 'Tìm hoài không thấy!' });\n    at /Users/cuong/vscode/tester/tests/search.spec.js:122:32"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Navigated to /tim-kiem via mobile bottom nav tab.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:48:33.411Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-89eaf-b-on-bottom-navigation-dock-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-89eaf-b-on-bottom-navigation-dock-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/search.spec.js",
+                        "column": 32,
+                        "line": 122
+                      }
+                    },
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 15432,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\u001b[22m\n\n    at /Users/cuong/vscode/tester/tests/search.spec.js:122:32",
+                        "location": {
+                          "file": "/Users/cuong/vscode/tester/tests/search.spec.js",
+                          "column": 32,
+                          "line": 122
+                        },
+                        "snippet": "  120 |     \n  121 |     // We assert this is visible to capture the bug (it will fail because current code shows the empty state instead)\n> 122 |     await expect(welcomeTitle).toBeVisible();\n      |                                ^\n  123 |\n  124 |     // 6. We expect the empty/error state is NOT visible when we haven't typed anything\n  125 |     const emptyStateTitle = page.locator('h3', { hasText: 'Tìm hoài không thấy!' });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/cuong/vscode/tester/tests/search.spec.js",
+                            "column": 32,
+                            "line": 122
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h3').filter({ hasText: 'Tìm Kiếm Phim' })\u001b[22m\n\n\n  120 |     \n  121 |     // We assert this is visible to capture the bug (it will fail because current code shows the empty state instead)\n> 122 |     await expect(welcomeTitle).toBeVisible();\n      |                                ^\n  123 |\n  124 |     // 6. We expect the empty/error state is NOT visible when we haven't typed anything\n  125 |     const emptyStateTitle = page.locator('h3', { hasText: 'Tìm hoài không thấy!' });\n    at /Users/cuong/vscode/tester/tests/search.spec.js:122:32"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Navigated to /tim-kiem via mobile bottom nav tab.\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-06-01T02:48:43.926Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-89eaf-b-on-bottom-navigation-dock-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-89eaf-b-on-bottom-navigation-dock-chromium-retry1/error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-89eaf-b-on-bottom-navigation-dock-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/cuong/vscode/tester/tests/search.spec.js",
+                        "column": 32,
+                        "line": 122
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-3e340b5ff384dd6f6694",
+              "file": "search.spec.js",
+              "line": 101,
+              "column": 3
+            },
+            {
+              "title": "should not submit search when entering only whitespace",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6291,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:49:03.372Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-baab9-en-entering-only-whitespace-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-452e5d0f933137af04ec",
+              "file": "search.spec.js",
+              "line": 130,
+              "column": 3
+            },
+            {
+              "title": "should handle special characters input gracefully",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6414,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:49:09.832Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-f9939-characters-input-gracefully-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-73aeb2905fdb2251b098",
+              "file": "search.spec.js",
+              "line": 142,
+              "column": 3
+            },
+            {
+              "title": "should handle extremely long keywords (>100 chars) without breaking UI layout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6125,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:49:16.290Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-843e2--without-breaking-UI-layout-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-a0b51980cfacf4bfdd10",
+              "file": "search.spec.js",
+              "line": 152,
+              "column": 3
+            },
+            {
+              "title": "should sanitize potential XSS script injections in search input",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5940,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:49:22.448Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-8c7e6--injections-in-search-input-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-69db3aefbc440bf2091b",
+              "file": "search.spec.js",
+              "line": 163,
+              "column": 3
+            },
+            {
+              "title": "should allow toggling search bar visibility rapidly 5 times without state corruption",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6408,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:49:28.416Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-86add-es-without-state-corruption-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-8fa9ccd958f9d17c633f",
+              "file": "search.spec.js",
+              "line": 173,
+              "column": 3
+            },
+            {
+              "title": "should process search immediately when pressing Enter key",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5086,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-01T02:49:34.848Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/cuong/vscode/tester/test-results/search-CMovie---Search-Rea-afc12-ely-when-pressing-Enter-key-chromium/test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "9e6ea2b6d72fedbaa223-282fb3bd64fd33f28ade",
+              "file": "search.spec.js",
+              "line": 185,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-06-01T02:42:09.846Z",
+    "duration": 450137.957,
+    "expected": 42,
+    "skipped": 0,
+    "unexpected": 8,
+    "flaky": 0
+  }
+}
